@@ -1,0 +1,6 @@
+build --incompatible_strict_action_env=true
+common --registry=https://bcr.bazel.build
+common --enable_bzlmod
+build --bes_backend=grpcs://cloud.buildbuddy.io
+build --bes_results_url=https://app.buildbuddy.io/invocation/
+
