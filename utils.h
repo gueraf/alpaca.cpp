@@ -108,3 +108,5 @@ size_t ggml_quantize_q4_0(float * src, void * dst, int n, int k, int qk, int64_t
 size_t ggml_quantize_q4_1(float * src, void * dst, int n, int k, int qk, int64_t * hist);
 
 bool llama_model_load(const std::string & fname, llama_model & model, gpt_vocab & vocab, int n_ctx);
+
+const char * llama_print_system_info(void);
