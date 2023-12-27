@@ -1,3 +1,5 @@
+#include <map>
+
 // default hparams (LLaMA 7B)
 struct llama_hparams {
     int32_t n_vocab = 32000;
