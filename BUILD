@@ -1,10 +1,11 @@
 # bazel build :chat && ./bazel-bin/chat
 
 cc_library(
-    name = "utils",
-    srcs = ["utils.cpp"],
-    hdrs = ["utils.h"],
-    visibility = ["//visibility:public"],
+  name = "ggml",
+  srcs = ["ggml.c"],
+  hdrs = ["ggml.h"],
+  visibility = ["//visibility:public"],
+  copts = ["-O3 -DNDEBUG -fPIC -pthread -mavx -mavx2 -mfma -mf16c -msse3"],
 )
 
 cc_library(
@@ -14,11 +15,11 @@ cc_library(
 )
 
 cc_library(
-  name = "ggml",
-  srcs = ["ggml.c"],
-  hdrs = ["ggml.h"],
-  visibility = ["//visibility:public"],
-  copts = ["-O3 -DNDEBUG -fPIC -pthread -mavx -mavx2 -mfma -mf16c -msse3"],
+    name = "utils",
+    srcs = ["utils.cpp"],
+    hdrs = ["utils.h"],
+    deps = [":structs", ":ggml"],
+    visibility = ["//visibility:public"],
 )
 
 cc_binary(

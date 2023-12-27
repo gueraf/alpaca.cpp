@@ -1,3 +1,5 @@
+#pragma once
+
 #include <map>
 
 // default hparams (LLaMA 7B)
