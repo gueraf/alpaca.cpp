@@ -8,6 +8,12 @@ cc_library(
 )
 
 cc_library(
+    name = "structs",
+    hdrs = ["structs.h"],
+    visibility = ["//visibility:public"],
+)
+
+cc_library(
   name = "ggml",
   srcs = ["ggml.c"],
   hdrs = ["ggml.h"],
@@ -18,5 +24,5 @@ cc_library(
 cc_binary(
   name = "chat",
   srcs = ["chat.cpp"],
-  deps = [":ggml", ":utils"],
+  deps = [":ggml", ":utils", ":structs"],
 )
