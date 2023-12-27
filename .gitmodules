@@ -1,0 +1,3 @@
+[submodule "alpaca_4bit_ggml"]
+	path = alpaca_4bit_ggml
+	url = https://huggingface.co/Sosaka/Alpaca-native-4bit-ggml.git
