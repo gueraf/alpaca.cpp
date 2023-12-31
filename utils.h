@@ -14,32 +14,6 @@
 // CLI argument parsing
 //
 
-// The default parameters
-struct gpt_params {
-    int32_t seed      = -1; // RNG seed
-    int32_t n_threads = std::min(4, (int32_t) std::thread::hardware_concurrency());
-    int32_t n_predict = 128; // new tokens to predict
-    int32_t repeat_last_n = 64;  // last n tokens to penalize
-    int32_t n_ctx = 2048; //context size
-    
-    // sampling parameters
-    int32_t top_k = 40;
-    float   top_p = 0.95f;
-    float   temp  = 0.10f;
-    float   repeat_penalty  = 1.30f;
-
-    int32_t n_batch = 8; // batch size for prompt processing
-
-    std::string model = "ggml-alpaca-7b-q4.bin"; // model path
-    std::string prompt;
-
-    bool use_color = true; // use color to distinguish generations and inputs
-
-    bool interactive = true; // interactive mode
-    bool interactive_start = true; // reverse prompt immediately
-    std::string antiprompt = ""; // string upon seeing which more user input is prompted
-};
-
 bool gpt_params_parse(int argc, char ** argv, gpt_params & params);
 
 void gpt_print_usage(int argc, char ** argv, const gpt_params & params);
