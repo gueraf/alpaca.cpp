@@ -2,41 +2,43 @@
 
 #include <cstdint>
 #include <map>
-#include <vector>
 #include <string>
+#include <thread>
+#include <vector>
 
 // The default parameters
 struct gpt_params {
-    int32_t seed      = -1; // RNG seed
-    int32_t n_threads = std::min(4, (int32_t) std::thread::hardware_concurrency());
-    int32_t n_predict = 128; // new tokens to predict
-    int32_t repeat_last_n = 64;  // last n tokens to penalize
-    int32_t n_ctx = 2048; //context size
-    
-    // sampling parameters
-    int32_t top_k = 40;
-    float   top_p = 0.95f;
-    float   temp  = 0.10f;
-    float   repeat_penalty  = 1.30f;
+  int32_t seed = -1; // RNG seed
+  int32_t n_threads = std::min(4, (int32_t)std::thread::hardware_concurrency());
+  int32_t n_predict = 128;    // new tokens to predict
+  int32_t repeat_last_n = 64; // last n tokens to penalize
+  int32_t n_ctx = 2048;       // context size
 
-    int32_t n_batch = 8; // batch size for prompt processing
+  // sampling parameters
+  int32_t top_k = 40;
+  float top_p = 0.95f;
+  float temp = 0.10f;
+  float repeat_penalty = 1.30f;
 
-    std::string model = "ggml-alpaca-7b-q4.bin"; // model path
-    std::string prompt;
+  int32_t n_batch = 8; // batch size for prompt processing
 
-    bool use_color = true; // use color to distinguish generations and inputs
+  std::string model = "ggml-alpaca-7b-q4.bin"; // model path
+  std::string prompt;
 
-    bool interactive = true; // interactive mode
-    bool interactive_start = true; // reverse prompt immediately
-    std::string antiprompt = ""; // string upon seeing which more user input is prompted
+  bool use_color = true; // use color to distinguish generations and inputs
+
+  bool interactive = true;       // interactive mode
+  bool interactive_start = true; // reverse prompt immediately
+  std::string antiprompt =
+      ""; // string upon seeing which more user input is prompted
 };
 
 struct gpt_vocab {
-    using id    = int32_t;
-    using token = std::string;
+  using id = int32_t;
+  using token = std::string;
 
-    std::map<token, id> token_to_id;
-    std::map<id, token> id_to_token;
+  std::map<token, id> token_to_id;
+  std::map<id, token> id_to_token;
 };
 
 // default hparams (LLaMA 7B)
