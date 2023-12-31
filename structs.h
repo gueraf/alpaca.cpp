@@ -31,6 +31,14 @@ struct gpt_params {
     std::string antiprompt = ""; // string upon seeing which more user input is prompted
 };
 
+struct gpt_vocab {
+    using id    = int32_t;
+    using token = std::string;
+
+    std::map<token, id> token_to_id;
+    std::map<id, token> id_to_token;
+};
+
 // default hparams (LLaMA 7B)
 struct llama_hparams {
   int32_t n_vocab = 32000;

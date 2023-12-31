@@ -24,14 +24,6 @@ std::string gpt_random_prompt(std::mt19937 & rng);
 // Vocab utils
 //
 
-struct gpt_vocab {
-    using id    = int32_t;
-    using token = std::string;
-
-    std::map<token, id> token_to_id;
-    std::map<id, token> id_to_token;
-};
-
 void replace(std::string & str, const std::string & needle, const std::string & replacement);
 
 // poor-man's JSON parsing
